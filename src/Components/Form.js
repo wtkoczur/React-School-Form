@@ -22,6 +22,7 @@ function Form() {
     const [bio, setBio] = useInput('')
     const [gender, setGender] = useState('')
     const [regulations, setRegulations] = useState('')
+    const [success, setSuccessText] = useState('')
 
     const [nameErr, setNameErr] = useState({});
     const [emailErr, setEmailErr] = useState({});
@@ -39,16 +40,18 @@ function Form() {
     const genderChange = (event) => setGender(event.target.value)
     const regChange = (event) => setRegulations(event.target.value)
 
+    //const successHandler = () => setSuccessText("Thanks for sending your form!")
 
     const handleSubmit = (event) =>{
         event.preventDefault();
         const isValid = formValidation();
         if(isValid){
+            setSuccessText("Thanks for sending your form!")
             // setName('');
             // setEmail('');
             // setBio('');
-            setGender('');
-            setRegulations('');
+            // setGender('');
+            // setRegulations('');
         }
     }
 
@@ -151,6 +154,7 @@ function Form() {
                     <button type="submit" onClick={checkError} style={style.btn}>Send</button>
                 </div>
             </form>
+            <div>{success ? <h5>{success}</h5> : ""}</div>
         </div>
     )
 
