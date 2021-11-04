@@ -40,13 +40,14 @@ function Form() {
     const genderChange = (event) => setGender(event.target.value)
     const regChange = (event) => setRegulations(event.target.value)
 
-    //const successHandler = () => setSuccessText("Thanks for sending your form!")
+
 
     const handleSubmit = (event) =>{
         event.preventDefault();
         const isValid = formValidation();
         if(isValid){
             setSuccessText("Thanks for sending your form!")
+            event.target.reset()
             // setName('');
             // setEmail('');
             // setBio('');
@@ -60,6 +61,7 @@ function Form() {
         const emailErr= {};
         const bioErr = {};
         const genderErr = {};
+        const regulationsErr = {};
         let isValid = true;
 
         if(name === ''){
@@ -153,8 +155,9 @@ function Form() {
                 <div style={style.subBtn}>
                     <button type="submit" onClick={checkError} style={style.btn}>Send</button>
                 </div>
+                <div>{success ? <h5>{success}</h5> : ""}</div>
             </form>
-            <div>{success ? <h5>{success}</h5> : ""}</div>
+            
         </div>
     )
 
